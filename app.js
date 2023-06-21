@@ -25,10 +25,10 @@ app.use(rateLimiter);
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'http://localhost:3000',
-  'http://jet.nomoredomains.work',
-  'https://jet.nomoredomains.work',
-  'http://api.jet.nomoredomains.work',
-  'https://api.jet.nomoredomains.work',
+  'http://diplom.movies.nomoredomains.work',
+  'https://diplom.movies.nomoredomains.work',
+  'http://api.diplom.movies.nomoredomains.work',
+  'https://api.diplom.movies.nomoredomains.work',
 ];
 
 // безопасность

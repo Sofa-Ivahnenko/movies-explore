@@ -13,7 +13,7 @@ const { requestLogger, errorLogger } = require('./middleware/logger');
 const rateLimiter = require('./middleware/rateLimiter');
 const NotFoundError = require('./errors/not-found-error');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -24,6 +24,7 @@ app.use(rateLimiter);
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
+  'http://localhost:3001',
   'http://localhost:3000',
   'http://diplom.movies.nomoredomains.work',
   'https://diplom.movies.nomoredomains.work',

@@ -8,8 +8,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
-const userRoutes = require('./routes/users'); // импортируем роуты пользователя
-const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
+const router = require('./routes/index');
+// const userRoutes = require('./routes/users'); // импортируем роуты пользователя
+// const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const rateLimiter = require('./middleware/rateLimiter');
@@ -63,8 +64,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/',userRoutes ); // запускаем импортированные роуты
-app.use('/', movieRoutes); // запускаем импортированные роуты
+
+app.use(router);
+// app.use('/',userRoutes ); // запускаем импортированные роуты
+// app.use('/', movieRoutes); // запускаем импортированные роуты
 
 mongoose.connect(DATABASE);
 // mongoose.connect('mongodb://127.0.0.1/bitfilmsdb');

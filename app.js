@@ -25,6 +25,9 @@ app.use(cookieParser());
 app.use(requestLogger);
 app.use(rateLimiter);
 
+app.use(cors());
+app.use(helmet());
+
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'http://localhost:3001',
@@ -62,8 +65,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors());
-app.use(helmet());
 
 // app.use('/', router);
 

@@ -25,9 +25,7 @@ app.use(cookieParser());
 app.use(requestLogger);
 app.use(rateLimiter);
 
-app.use(helmet());
 
-app.use(cors());
 
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
@@ -87,3 +85,7 @@ app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
   console.log(`App listening on port ${PORT}`);
 });
+
+app.use(helmet());
+
+app.use(cors());

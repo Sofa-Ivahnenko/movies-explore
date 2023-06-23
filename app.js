@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 // const router = require('./routes');
-const helmet = require('helmet');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');
@@ -26,7 +25,7 @@ app.use(requestLogger);
 app.use(rateLimiter);
 
 app.use(cors());
-app.use(helmet());
+
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [

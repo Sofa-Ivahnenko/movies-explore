@@ -4,7 +4,7 @@ const router = require('express').Router();
 const auth = require('../middleware/auth');
 // const validateURL = require('../middleware/methods');
 
-const { validateCreateMovie, validateMovie} = require('../middlewares/validation');
+const { validateCreateMovie, validateMovie} = require('../middleware/validation');
 const {getMovies, createMovie, deleteMovie} = require('../controllers/movies');
 
 // авторизация

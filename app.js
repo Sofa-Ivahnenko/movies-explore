@@ -3,11 +3,11 @@ const express = require('express');
 
 const app = express();
 const mongoose = require('mongoose'); //+
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
-const helmet = require('helmet');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');
@@ -25,7 +25,6 @@ app.use(requestLogger);
 app.use(rateLimiter);
 
 app.use(helmet());
-
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [

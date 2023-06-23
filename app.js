@@ -6,6 +6,7 @@ const mongoose = require('mongoose'); //+
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');

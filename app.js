@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
+const helmet = require('helmet');
 // const router = require('./routes');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
@@ -23,6 +24,8 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 app.use(rateLimiter);
+
+app.use(helmet());
 
 app.use(cors());
 

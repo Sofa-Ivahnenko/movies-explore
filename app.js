@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 const helmet = require('helmet');
-// const router = require('./routes');
 const userRoutes = require('./routes/users'); // импортируем роуты пользователя
 const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');
@@ -25,7 +24,7 @@ app.use(cookieParser());
 app.use(requestLogger);
 app.use(rateLimiter);
 
-
+app.use(helmet());
 
 
 // Массив доменов, с которых разрешены кросс-доменные запросы
@@ -65,9 +64,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-// app.use('/', router);
-
 app.use('/',userRoutes ); // запускаем импортированные роуты
 app.use('/', movieRoutes); // запускаем импортированные роуты
 
@@ -85,7 +81,5 @@ app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
   console.log(`App listening on port ${PORT}`);
 });
-
-app.use(helmet());
 
 app.use(cors());

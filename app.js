@@ -7,10 +7,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
-const router = require('./routes');
+// const router = require('./routes');
 const helmet = require('helmet');
-// const userRoutes = require('./routes/users'); // импортируем роуты пользователя
-// const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
+const userRoutes = require('./routes/users'); // импортируем роуты пользователя
+const movieRoutes = require('./routes/movies'); // импортируем роуты фильмов
 const errorHandler = require('./middleware/error-handler');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const rateLimiter = require('./middleware/rateLimiter');
@@ -62,11 +62,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(cors());
+app.use(helmet());
 
-app.use('/', router);
+// app.use('/', router);
 
-// app.use('/',userRoutes ); // запускаем импортированные роуты
-// app.use('/', movieRoutes); // запускаем импортированные роуты
+app.use('/',userRoutes ); // запускаем импортированные роуты
+app.use('/', movieRoutes); // запускаем импортированные роуты
 
 mongoose.connect('mongodb://127.0.0.1/bitfilmsdb') = process.env;
 
@@ -82,6 +84,3 @@ app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
   console.log(`App listening on port ${PORT}`);
 });
-
-app.use(cors());
-app.use(helmet());

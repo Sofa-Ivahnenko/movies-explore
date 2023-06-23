@@ -63,9 +63,9 @@ app.use((req, res, next) => {
 });
 
 
-app.use(router);
+app.use('/', router);
 
-// app.use('/', userRoutes); // запускаем импортированные роуты
+// app.use('/',userRoutes ); // запускаем импортированные роуты
 // app.use('/', movieRoutes); // запускаем импортированные роуты
 
 mongoose.connect('mongodb://127.0.0.1/bitfilmsdb') = process.env;

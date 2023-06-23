@@ -62,8 +62,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors());
-app.use(helmet());
 
 app.use(router);
 
@@ -84,3 +82,6 @@ app.listen(PORT, () => {
   // Если всё работает, консоль покажет, какой порт приложение слушает
   console.log(`App listening on port ${PORT}`);
 });
+
+app.use(cors());
+app.use(helmet());

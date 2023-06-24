@@ -3,8 +3,10 @@ const router = require('express').Router();
 // const { celebrate, Joi } = require('celebrate');
 // const auth = require('../middleware/auth');
 
-const { validateSignup, validateSignin, validateUserProfile, } = require('../middleware/validation');
-const {createUser, login, getUser, updateUser, signout} = require('../controllers/users');
+const { validateSignup, validateSignin, validateUserProfile } = require('../middleware/validation');
+const {
+  createUser, login, getUser, updateUser, signout,
+} = require('../controllers/users');
 
 // роуты, не требующие авторизации, регистрация и логин
 router.post('/signup', validateSignup, createUser);

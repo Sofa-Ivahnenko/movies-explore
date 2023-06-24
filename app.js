@@ -16,7 +16,7 @@ const { requestLogger, errorLogger } = require('./middleware/logger');
 const rateLimiter = require('./middleware/rateLimiter');
 const NotFoundError = require('./errors/not-found-error');
 
-const { PORT = 3000, DATABASE = 'mongodb://127.0.0.1/bitfilmsdb'} = process.env;
+const { PORT = 3000, DATABASE = 'mongodb://127.0.0.1/bitfilmsdb' } = process.env;
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -63,7 +63,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
 
 app.use(router);
 // app.use('/',userRoutes ); // запускаем импортированные роуты

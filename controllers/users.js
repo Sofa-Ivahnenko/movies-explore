@@ -88,7 +88,7 @@ module.exports.getUser = (request, response, next) => {
           data: user,
         });
       }
-      throw new ForbiddenError (`Пользователь по указанному id ${request.user._id} не найден`);
+      throw new ForbiddenError(`Пользователь по указанному id ${request.user._id} не найден`);
     })
     .catch(next);
 };
@@ -110,9 +110,7 @@ module.exports.updateUser = (request, response, next) => User.findByIdAndUpdate(
     if (error.name === 'ValidationError') {
       next(new BadRequestError(`${Object.values(error.errors).map((err) => err.message).join(', ')}`));
     } else if (error.code === 11000) {
-      next(new ConflictError
-        (`Пользователь с таким email - ${request.body.email} уже существует, введите другой email`)
-      );
+      next(new ConflictError(`Пользователь с таким email - ${request.body.email} уже существует, введите другой email`));
     } else {
       next(error); // Для всех остальных ошибок
     }
